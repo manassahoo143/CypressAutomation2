@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "chrome": "cypress run --headed --spec cypress\\e2e\\tests\\saucedemo.cy.js --browser chrome"
+    "chrome": "cypress run --headed --spec cypress\\e2e\\tests\\saucedemo.cy.js --browser chrome",
+    "edge": "cypress run --headed --spec cypress\\e2e\\tests\\saucedemo.cy.js --browser edge"
   },
   "author": "Manas",
   "license": "ISC",
