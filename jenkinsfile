@@ -1,0 +1,33 @@
+pipeline{
+
+    agent any
+
+    parameters{
+        string(name: 'SPEC', defaultValue: "cypress/e2e/tests/saucedemo.cy.js", description: "Testing purpose")
+        choice(name: 'BROWSER', choices: ['chrome','edge'], description: "Choice the browser")
+    }
+
+    options{
+        ansiColor('xterm')
+    }
+
+    stages{
+        stage('Building'){
+            echo "Building the application"
+        }
+        stage('Testing'){
+            steps{
+                bat "npm i"
+                bat "npx cypress run --headed --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+        stage('Deploying'){
+            echo "Deploy the application"
+        }
+    }
+    post{
+        always{
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+        }
+    }
+}
