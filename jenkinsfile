@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     parameters{
-        string(name: 'SPEC', defaultValue: "cypress/e2e/tests/saucedemo.cy.js", description: "Testing purpose")
+        string(name: 'SPEC', defaultValue: "cypress\\e2e\\tests\\saucedemo.cy.js", description: "Testing purpose")
         choice(name: 'BROWSER', choices: ['chrome','edge'], description: "Choice the browser")
     }
 
